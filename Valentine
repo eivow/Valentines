@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Dali ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+      max-width: 420px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      color: #c9184a;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+
+    h2 {
+      color: #6d6875;
+      font-weight: normal;
+      margin-bottom: 1.8rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
+    }
+
+    button {
+      padding: 14px 32px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background: #c9184a;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="orange-blossom.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Dali 🌸</h1>
+    <h2>I have one question for you</h2>
+    <p>
+      Will you be my valentines<br>
+      for the remainder of your life?
+    </p>
+    <button id="yes">Yes ❤️</button>
+  </div>
+
+  <div class="hearts"></div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const hearts = document.querySelector(".hearts");
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".card").innerHTML = `
+        <h1>❤️</h1>
+        <p>
+          I choose you.<br>
+          Today, tomorrow, and always.
+        </p>
+      `;
+      setInterval(createHeart, 180);
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  </script>
+
+</body>
+</html>
