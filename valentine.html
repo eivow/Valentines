@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Dali ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 2.2rem 1.8rem;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+      width: 100%;
+      max-width: 380px;
+      animation: fadeIn 1.4s ease;
+    }
+
+    h1 {
+      color: #c9184a;
+      margin-bottom: 0.4rem;
+      font-size: 1.9rem;
+    }
+
+    h2 {
+      color: #6d6875;
+      font-weight: normal;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #444;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #6d6875;
+      font-style: italic;
+    }
+
+    button {
+      padding: 14px 36px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: #c9184a;
+      color: white;
+      transition: transform 0.2s ease;
+      width: 100%;
+      max-width: 220px;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music (mobile-friendly) -->
+  <audio autoplay loop playsinline>
+    <source src="orange-blossom.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Dali 🌸</h1>
+    <h2>I have one question for you</h2>
+
+    <p>
+      Will you be my valentines<br>
+      for the remainder of your life?
+    </p>
+
+    <button id="yes">Yes ❤️</button>
+
+    <div class="signature">— Flynn</div>
+  </div>
+
+  <div class="hearts"></div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const hearts = document.querySelector(".hearts");
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".card").innerHTML = `
+        <h1>❤️</h1>
+        <p>
+          I choose you.<br>
+          Today, tomorrow, and always.
+        </p>
+        <div class="signature">— Flynn</div>
+      `;
+      setInterval(createHeart, 200);
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  </script>
+
+</body>
+</html>
